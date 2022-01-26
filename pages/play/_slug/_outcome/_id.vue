@@ -1,17 +1,20 @@
 <template>
   <div class="container">
     <Header />
-    <Main path="play/2" />
+    <Main />
   </div>
 </template>
 
 <script>
-import Header from "../components/Header";
+import Header from "../../../../components/Header";
 
 export default {
   name: "App",
   components: {
     Header,
+  },
+  created() {
+    console.log(this.$route.params);
   },
 };
 </script>

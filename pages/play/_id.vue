@@ -1,17 +1,23 @@
 <template>
   <div class="container">
     <Header />
-    <Main path="play/2" />
+    <Main :path="this.id + '/outcome/1'" />
   </div>
 </template>
 
 <script>
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 export default {
   name: "App",
   components: {
     Header,
+  },
+  created() {
+    console.log(this.$route.params);
+    !!this.$route.params.id
+      ? (this.id = this.$route.params.id)
+      : (this.id = null);
   },
 };
 </script>
