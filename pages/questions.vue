@@ -1,29 +1,17 @@
 <template>
   <div class="container">
     <Header />
-    <Main
-      :questionId="this.$route.params.slug"
-      :outcomeId="this.id"
-      :path="this.path"
-    />
+    <Main path="play/2" />
   </div>
 </template>
 
 <script>
-import Header from "../../../../components/Header";
+import Header from "../components/Header";
 
 export default {
   name: "App",
   components: {
     Header,
-  },
-  created() {
-    this.$store.state.isCorrect
-      ? (this.path = `/play/${Number(this.$route.params.slug) + 1}`)
-      : (this.path = "/");
-    !!this.$route.params.id
-      ? (this.id = this.$route.params.id)
-      : (this.id = null);
   },
 };
 </script>

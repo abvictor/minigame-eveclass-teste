@@ -33,8 +33,18 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: "https://minigame-eveclass-api.herokuapp.com/",
+    },
+  },
+
+  /*
+   ** Modules - https://nuxtjs.org/docs/2.x/directory-structure/modules
+   */
+  modules: ["@nuxtjs/axios"],
 };

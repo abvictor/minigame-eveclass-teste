@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
     "@vue/cli": "^4.5.15",
     "core-js": "^3.19.3",
     "normalize.css": "^8.0.1",

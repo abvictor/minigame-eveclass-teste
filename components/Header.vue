@@ -1,5 +1,5 @@
 <template>
-  <header class="header">You 2SE</header>
+  <header class="header">You 2se</header>
 </template>
 
 <script>

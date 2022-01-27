@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <Header />
-    <Main :path="this.id + '/outcome/1'" />
+    <Main
+      :path="this.id + '/outcome/' + this.$store.getters.getResponse"
+      :questionId="this.id"
+    />
   </div>
 </template>
 
@@ -14,7 +17,6 @@ export default {
     Header,
   },
   created() {
-    console.log(this.$route.params);
     !!this.$route.params.id
       ? (this.id = this.$route.params.id)
       : (this.id = null);

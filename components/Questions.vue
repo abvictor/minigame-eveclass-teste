@@ -2,36 +2,64 @@
   <div>
     <h2 class="minigame__title">Minigame</h2>
     <div class="question__container">
-      <h4 class="question__title">Questão 1.</h4>
-      <p class="question__sentence">
-        Você acordou na floresta tonto e com uma grande dor de cabeça, sem
-        nenhuma memória de como foi parar ali. Um barulho cada vez mais intenso
-        foi o que despertou você desse apagão. Após abrir os olhos e
-        levantar-se, você observa uma manada de búfalos vindo em sua direção, a
-        pouquíssimos metros de distância. Oque você faz?
-      </p>
+      <h4 class="question__title">Questão {{ index + 1 }}.</h4>
+      <p class="question__sentence">{{ question.statement }}</p>
     </div>
     <div class="choices__container">
       <div>
-        <input type="radio" id="q1" name="q1" value="A" />
-        <label for="q1">A. Corre o mais rápido possível</label>
+        <input
+          type="radio"
+          id="q1"
+          name="q1"
+          value="1"
+          @change="onChange($event)"
+        />
+        <label for="q1">A. {{ question.choices[0].sentence }}</label>
       </div>
       <div>
-        <input type="radio" id="q2" name="q1" value="B" />
-        <label for="q2">B. Sobe na árvore</label>
+        <input
+          type="radio"
+          id="q2"
+          name="q1"
+          value="2"
+          @change="onChange($event)"
+        />
+        <label for="q2">B. {{ question.choices[1].sentence }} </label>
       </div>
       <div>
-        <input type="radio" id="q3" name="q1" value="C" />
-        <label for="q3">C. Se finge de morto</label>
+        <input
+          type="radio"
+          id="q3"
+          name="q1"
+          value="3"
+          @change="onChange($event)"
+        />
+        <label for="q3">C. {{ question.choices[2].sentence }}</label>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import Button from "./Button";
 export default {
   name: "Questions",
   components: { Button },
+  created() {
+    this.$store.commit("addResponse", "");
+    this.question = this.$store.state.questions[0][this.index];
+  },
+  props: ["index"],
+  methods: {
+    onChange(event) {
+      this.picked = event.target.value;
+      this.$store.commit(
+        "setIsCorrect",
+        this.picked == this.question.correctChoice
+      );
+      this.$store.commit("addResponse", this.picked);
+    },
+  },
 };
 </script>
 
